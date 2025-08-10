@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Universe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            color: white;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .floating-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .interactive-section {
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .color-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 20px 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 50px 0;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .floating-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .color-palette {
+                gap: 10px;
+            }
+            
+            .color-btn {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">I Love You My Best Friend</h1>
+            <p class="subtitle">Dosti ki duniya sabse pyari hai, aur tum uss duniya ka sabse khoobsurat hissa ho.</p>
+        </header>
+
+        <div class="floating-cards">
+            <div class="card">
+                <span class="card-icon">✨</span>
+                <h3>Dosti Ki Chamk</h3>
+                <p>Jab bhi tum saath ho, zindagi ek khoobsurat safar lagti hai. Har pal tumhare saath magical hai.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🎨</span>
+                <h3>Rangin Yaadein</h3>
+                <p>Hamari dosti har rang se bhi zyada rangeen hai. Tumhare bina sab kuch adhoora hai.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🌟</span>
+                <h3>Sath Ki Roshanai</h3>
+                <p>Tumhara sath har din ko roshan kar deta hai. Best friend, tum ho toh sab kuch hai!</p>
+            </div>
+        </div>
+
+        <div class="interactive-section">
+            <h2 style="color: white; margin-bottom: 20px;">Apni Dosti Ko Mehsoos Karo</h2>
+            <p style="color: white; margin-bottom: 30px;">Har rang, har pal tumhare naam. Kisi bhi color par click karo aur dosti ki khushbu mehsoos karo!</p>
+            
+            <div class="color-palette">
+                <button class="color-btn" style="background: linear-gradient(45deg, #667eea, #764ba2);" onclick="changeTheme('default')"></button>
+                <button class="color-btn" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24);" onclick="changeTheme('sunset')"></button>
+                <button class="color-btn" style="background: linear-gradient(45deg, #4ecdc4, #44a08d);" onclick="changeTheme('ocean')"></button>
+                <button class="color-btn" style="background: linear-gradient(45deg, #a8edea, #fed6e3);" onclick="changeTheme('pastel')"></button>
+                <button class="color-btn" style="background: linear-gradient(45deg, #ff9a9e, #fecfef);" onclick="changeTheme('rose')"></button>
+                <button class="color-btn" style="background: linear-gradient(45deg, #a8caba, #5d4e75);" onclick="changeTheme('forest')"></button>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <button class="cta-button" onclick="createExplosion()">Dosti Ka Jadoo ✨</button>
+                <button class="cta-button" onclick="toggleParticles()">Yaari Ki Chamak 🌟</button>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Yeh sab kuch tumhare liye, mere sabse pyare dost. I love you my best friend! ❤️</p>
+        </footer>
+    </div>
+
+    <div class="particle-container" id="particles"></div>
+
+    <script>
+        // Particle system
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Theme changer
+        function changeTheme(theme) {
+            const body = document.body;
+            const themes = {
+                default: 'linear-gradient(45deg, #667eea 0%, #764ba2 100%)',
+                sunset: 'linear-gradient(45deg, #ff6b6b 0%, #ee5a24 100%)',
+                ocean: 'linear-gradient(45deg, #4ecdc4 0%, #44a08d 100%)',
+                pastel: 'linear-gradient(45deg, #a8edea 0%, #fed6e3 100%)',
+                rose: 'linear-gradient(45deg, #ff9a9e 0%, #fecfef 100%)',
+                forest: 'linear-gradient(45deg, #a8caba 0%, #5d4e75 100%)'
+            };
+            
+            body.style.background = themes[theme];
+            body.style.transition = 'background 0.5s ease';
+        }
+
+        // Magic explosion effect
+        function createExplosion() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const explosion = document.createElement('div');
+                    explosion.style.position = 'fixed';
+                    explosion.style.left = Math.random() * window.innerWidth + 'px';
+                    explosion.style.top = Math.random() * window.innerHeight + 'px';
+                    explosion.style.width = '10px';
+                    explosion.style.height = '10px';
+                    explosion.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    explosion.style.borderRadius = '50%';
+                    explosion.style.pointerEvents = 'none';
+                    explosion.style.zIndex = '1000';
+                    explosion.style.animation = 'explode 1s ease-out forwards';
+                    
+                    document.body.appendChild(explosion);
+                    
+                    setTimeout(() => {
+                        explosion.remove();
+                    }, 1000);
+                }, i * 50);
+            }
+        }
+
+        // Toggle particles
+        let particlesVisible = true;
+        function toggleParticles() {
+            const particles = document.querySelectorAll('.particle');
+            particlesVisible = !particlesVisible;
+            
+            particles.forEach(particle => {
+                particle.style.display = particlesVisible ? 'block' : 'none';
+            });
+        }
+
+        // Add explosion animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes explode {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(3) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize particles on load
+        window.addEventListener('load', createParticles);
+
+        // Add mouse trail effect
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.1) {
+                const trail = document.createElement('div');
+                trail.style.position = 'fixed';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                trail.style.width = '4px';
+                trail.style.height = '4px';
+                trail.style.background = 'rgba(255, 255, 255, 0.8)';
+                trail.style.borderRadius = '50%';
+                trail.style.pointerEvents = 'none';
+                trail.style.zIndex = '999';
+                trail.style.animation = 'fadeOut 1s ease-out forwards';
+                
+                document.body.appendChild(trail);
+                
+                setTimeout(() => {
+                    trail.remove();
+                }, 1000);
+            }
+        });
+
+        // Add fade out animation for mouse trail
+        const trailStyle = document.createElement('style');
+        trailStyle.textContent = `
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0);
+                }
+            }
+        `;
+        document.head.appendChild(trailStyle);
+    </script>
+</body>
+</html>
